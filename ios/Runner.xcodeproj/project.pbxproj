@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		ECAAF855BC5D66501867C0F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD54F0BFC02AB7008B9B4EE3 /* GoogleService-Info.plist */; };
+		FA22D29F2998A71A007FC5BC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA22D29E2998A705007FC5BC /* libsqlite3.tbd */; };
+		FA22D2A02998A721007FC5BC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA22D29E2998A705007FC5BC /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +50,7 @@
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3276711CC738DADBF6928F3 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		FA22D29E2998A705007FC5BC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		FD54F0BFC02AB7008B9B4EE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA22D2A02998A721007FC5BC /* libsqlite3.tbd in Frameworks */,
+				FA22D29F2998A71A007FC5BC /* libsqlite3.tbd in Frameworks */,
 				47C6A5C2798F4FFD8343B1FC /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,13 +75,13 @@
 				3F9AC026FEE1E76C44DB7809 /* Pods-Runner.release.xcconfig */,
 				74EC0C4980D8025700AFDAC7 /* Pods-Runner.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		7E5750E880BF9EAFC082E1A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA22D29E2998A705007FC5BC /* libsqlite3.tbd */,
 				0D59683BFFC5479C67318CA0 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;

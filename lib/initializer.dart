@@ -9,6 +9,7 @@ import 'package:skybase/core/auth_manager/auth_manager.dart';
 import 'package:skybase/core/database/get_storage/get_storage_manager.dart';
 import 'package:skybase/core/database/hive/hive_db.dart';
 import 'package:skybase/core/database/secure_storage/secure_storage_manager.dart';
+import 'package:skybase/core/download_manager/download_manager.dart';
 import 'package:skybase/core/helper/general_function.dart';
 import 'package:skybase/core/network/api_config.dart';
 import 'package:skybase/core/themes/app_theme.dart';
@@ -47,6 +48,6 @@ class Initializer {
 
     Get.put(AuthManager());
     // TODO : Uncomment code below if want to activate flutter_downloader
-    // await DownloadManager().initDownloader();
+    await DownloadManager.initDownloader();
   }
 }

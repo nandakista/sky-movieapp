@@ -43,7 +43,7 @@ class DownloadManager {
     FlutterDownloader.registerCallback(downloadCallback);
   }
 
-  Future<void> initDownloader() async {
+  static Future<void> initDownloader() async {
     await FlutterDownloader.initialize(
       debug: true,
       ignoreSsl: true,
@@ -51,7 +51,7 @@ class DownloadManager {
   }
 
   @pragma('vm:entry-point')
-  void downloadCallback(
+  static void downloadCallback(
       String id,
       DownloadTaskStatus status,
       int progress,
@@ -140,6 +140,11 @@ class DownloadManager {
   }
 
   void showDownloadedSnackBar() {
+    ScaffoldMessenger.of(Get.context!).showSnackBar(
+      SnackBar(
+        content: Text('txt_downloading'.tr),
+      ),
+    );
     late StreamSubscription<dynamic> subs;
     subs = DownloadManager().downloadInfo.listen((task) {
       if (task.status == DownloadTaskStatus.complete) {
