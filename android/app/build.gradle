@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.skybase.getx"
+        applicationId "com.sky.movieapp"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()

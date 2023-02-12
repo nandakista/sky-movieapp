@@ -26,8 +26,8 @@ class AppConfiguration {
   static const someDevKey = 'Some Key';
 
   //-- App Info
-  static String appName = 'Skybase';
-  static String appTag = 'Flutter Getx';
+  static String appName = 'MovieApp';
+  static String appTag = r"Let's watch the movie";
   static String appVersion = AppInfo.packageInfo.version;
   static String buildNumber = AppInfo.packageInfo.buildNumber;
   static String packageName = AppInfo.packageInfo.packageName;

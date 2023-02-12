@@ -11,7 +11,7 @@
         android:name="${applicationName}"
         android:fitsSystemWindows="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Skybase"
+        android:label="MovieApp"
         android:requestLegacyExternalStorage="true">
         <!-- For flutter_downloader-->
         <provider
