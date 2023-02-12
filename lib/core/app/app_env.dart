@@ -1,6 +1,5 @@
 // ignore_for_file: constant_identifier_names
 import 'package:skybase/app_configuration.dart';
-import 'package:skybase/core/app/app_socket.dart';
 import 'package:skybase/core/network/api_token_manager.dart';
 
 /* Created by
@@ -23,30 +22,26 @@ class AppEnv {
       case Env.PRODUCTION:
         config = Config(
           baseUrl: AppConfiguration.productionAPI,
-          clientToken: AppConfiguration.clientToken,
+          baseUrlImage: AppConfiguration.productionImageAPI,
+          apiKey: AppConfiguration.productionKey,
           tokenType: AppConfiguration.tokenType,
-          socketUrl: AppConfiguration.productionSocket,
-          midtransClientKey: AppConfiguration.someStagingKey,
         );
         break;
       case Env.STAGING:
         config = Config(
-          baseUrl: AppConfiguration.developmentAPI,
-          clientToken: AppConfiguration.clientToken,
+          baseUrl: AppConfiguration.stagingAPI,
+          baseUrlImage: AppConfiguration.stagingImageAPI,
+          apiKey: AppConfiguration.stagingKey,
           tokenType: AppConfiguration.tokenType,
-          socketUrl: AppConfiguration.stagingSocket,
-          midtransClientKey: AppConfiguration.someStagingKey,
         );
         break;
       case Env.DEVELOPMENT:
         config = Config(
           baseUrl: AppConfiguration.developmentAPI,
-          clientToken: AppConfiguration.clientToken,
+          baseUrlImage: AppConfiguration.developmentImageAPI,
           tokenType: AppConfiguration.tokenType,
-          socketUrl: AppConfiguration.developmentSocket,
-          midtransClientKey: AppConfiguration.someStagingKey,
+          apiKey: AppConfiguration.devKey,
         );
-        AppSocket().interceptor();
         break;
     }
   }
@@ -55,14 +50,12 @@ class AppEnv {
 class Config {
   Config({
     required this.baseUrl,
-    required this.clientToken,
+    required this.baseUrlImage,
+    required this.apiKey,
     required this.tokenType,
-    required this.midtransClientKey,
-    required this.socketUrl,
   });
   String baseUrl;
-  String clientToken;
+  String baseUrlImage;
+  String apiKey;
   TokenType tokenType;
-  String socketUrl;
-  String midtransClientKey;
 }

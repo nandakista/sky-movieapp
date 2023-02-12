@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:skybase/app_configuration.dart';
 import 'package:skybase/core/themes/app_colors.dart';
 import 'package:skybase/core/themes/app_style.dart';
@@ -37,18 +38,18 @@ class SplashView extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        'SKYBASE',
+                        AppConfiguration.appName,
                         style: AppStyle.headline2.copyWith(color: Colors.white),
                       ),
-                      const Text(
-                        'Flutter Getx',
-                        style: TextStyle(color: Colors.white),
+                      Text(
+                        AppConfiguration.appTag,
+                        style: const TextStyle(color: Colors.white),
                       ),
                     ],
                   ),
                 ),
                 Text(
-                  'Versi ${AppConfiguration.appVersion}',
+                  '${'txt_version'.tr} ${AppConfiguration.appVersion}',
                   style: const TextStyle(color: Colors.white),
                 ),
               ],

@@ -58,6 +58,7 @@ const Map<String, String> en = {
   'txt_failed_download_file': 'Failed download file',
   'txt_camera_not_found': 'Camera not found',
   'txt_something_went_wrong': 'Something went wrong!',
+  'txt_version': 'Version',
 
   // Sentence
   'txt_err_download_msg': 'An error occurred while downloading the file',

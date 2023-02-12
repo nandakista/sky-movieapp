@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:skybase/core/helper/extension/string_extension.dart';
-import 'package:skybase/ui/widgets/media/preview/media_preview_page.dart';
 
 import 'platform_loading_indicator.dart';
 
@@ -101,9 +100,7 @@ class DisplayImage extends StatelessWidget {
     return Stack(
       children: [
         GestureDetector(
-          onTap: enablePreview
-              ? () => Get.to(MediaPreviewPage(url: url))
-              : onTapImage,
+          onTap: onTapImage,
           child: isFromRemote
               ? ClipRRect(
                   borderRadius: borderRadius ?? BorderRadius.circular(0),

@@ -11,19 +11,19 @@ class AppConfiguration {
   static const tokenType = TokenType.ACCESS_TOKEN;
 
   //-- Production
-  static const productionAPI = 'https://api.github.com';
-  static const productionSocket = 'production socket url';
-  static const someProductionKey = 'Some Key';
+  static const productionAPI = 'https://api.themoviedb.org/3';
+  static const productionImageAPI = 'https://image.tmdb.org/t/p/w500';
+  static const productionKey = '4a8d8611a243a3a3d004b0862d00283e';
 
   //-- Staging
-  static const stagingAPI = 'https://api.github.com';
-  static const stagingSocket = 'staging socket url';
-  static const someStagingKey = 'Some Key';
+  static const stagingAPI = 'https://api.themoviedb.org/3';
+  static const stagingImageAPI = 'https://image.tmdb.org/t/p/w500';
+  static const stagingKey = '4a8d8611a243a3a3d004b0862d00283e';
 
   //-- Development
-  static const developmentAPI = 'https://api.github.com';
-  static const developmentSocket = 'development socket url';
-  static const someDevKey = 'Some Key';
+  static const developmentAPI = 'https://api.themoviedb.org/3';
+  static const developmentImageAPI = 'https://image.tmdb.org/t/p/w500';
+  static const devKey = '4a8d8611a243a3a3d004b0862d00283e';
 
   //-- App Info
   static String appName = 'MovieApp';

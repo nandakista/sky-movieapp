@@ -1,16 +1,9 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:skybase/ui/widgets/platform_loading_indicator.dart';
 import 'package:skybase/ui/widgets/sky_dialog.dart';
-
-class Toast {
-  static show(String message) {
-    Fluttertoast.showToast(msg: message);
-  }
-}
 
 class Loading {
   static show({bool? dismissible}) {

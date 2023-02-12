@@ -6,11 +6,8 @@ import 'package:skybase/core/database/get_storage/get_storage_manager.dart';
 import 'package:skybase/core/database/secure_storage/secure_storage_manager.dart';
 import 'package:skybase/core/auth_manager/auth_state.dart';
 import 'package:skybase/core/themes/theme_manager.dart';
-import 'package:skybase/data/sources/server/auth/auth_api_impl.dart';
 import 'package:skybase/data/models/user.dart';
 import 'package:skybase/domain/entities/user/user.dart';
-import 'package:skybase/ui/views/intro/intro_view.dart';
-import 'package:skybase/ui/views/login/login_view.dart';
 import 'package:skybase/ui/views/splash/splash_view.dart';
 import 'package:skybase/ui/views/main_navigation/main_nav_view.dart';
 
@@ -22,7 +19,9 @@ class AuthManager extends GetxService {
   static AuthManager get find => Get.find<AuthManager>();
 
   Rxn<AuthState> authState = Rxn<AuthState>();
+
   Stream<AuthState?> get stream => authState.stream;
+
   AuthState? get state => authState.value;
 
   GetStorageManager getStorage = GetStorageManager.find;
@@ -37,12 +36,8 @@ class AuthManager extends GetxService {
 
   @override
   void onReady() async {
-    // ever(authState, authChanged);
-    // authChanged(state);
-    Timer(
-      const Duration(seconds: 2),
-          () => Get.offAllNamed(LoginView.route),
-    );
+    ever(authState, authChanged);
+    authChanged(state);
     super.onReady();
   }
 
@@ -54,13 +49,21 @@ class AuthManager extends GetxService {
       case AppType.FIRST_INSTALL:
         Timer(
           const Duration(seconds: 2),
-          () => Get.offAllNamed(IntroView.route),
+          () => login(
+            user: UserModel(),
+            token: 'token',
+            refreshToken: 'refreshToken',
+          ),
         );
         break;
       case AppType.UNAUTHENTICATED:
         Timer(
           const Duration(seconds: 2),
-              () => Get.offAllNamed(LoginView.route),
+          () => login(
+            user: UserModel(),
+            token: 'token',
+            refreshToken: 'refreshToken',
+          ),
         );
         break;
       case AppType.AUTHENTICATED:
@@ -78,7 +81,8 @@ class AuthManager extends GetxService {
 
   /// Check if app is first time installed. It will navigate to Introduction Page
   void checkFirstInstall() async {
-    final bool firstInstall = getStorage.get(GetStorageKey.firstInstall) ?? true;
+    final bool firstInstall =
+        getStorage.get(GetStorageKey.firstInstall) ?? true;
     if (firstInstall) {
       await secureStorage.setToken(value: '');
       authState.value = const AuthState(appStatus: AppType.FIRST_INSTALL);
@@ -89,8 +93,9 @@ class AuthManager extends GetxService {
 
   /// Checking App Theme set it before app display
   Future<void> checkAppTheme() async {
-    final bool isDarkTheme = await getStorage.getAwait(GetStorageKey.darkTheme) ?? false;
-    if(isDarkTheme) {
+    final bool isDarkTheme =
+        await getStorage.getAwait(GetStorageKey.darkTheme) ?? false;
+    if (isDarkTheme) {
       themeManager.toDarkMode();
     } else {
       themeManager.toLightMode();
@@ -100,16 +105,12 @@ class AuthManager extends GetxService {
   /// This function to used for checking is valid token to API Server use GET User Endpoint (token required).
   /// If response is Error it will passed to [logout] process.
   Future<void> checkUser() async {
-    AuthApiImpl authApi = AuthApiImpl();
     final String? token = await secureStorage.getToken();
     User? user = getStorage.get(GetStorageKey.users);
 
     try {
-      await authApi
-          .verifyToken(userId: user?.id ?? 0, token: token.toString())
-          .then((res) async {
-        setAuth();
-      });
+      // Call API
+      setAuth();
     } catch (err) {
       logout();
     }

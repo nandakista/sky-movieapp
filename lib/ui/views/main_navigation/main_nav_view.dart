@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skybase/ui/views/favorite/favorite_view.dart';
 import 'package:skybase/ui/views/home/home_view.dart';
-import 'package:skybase/ui/views/intro/intro_view.dart';
 import 'package:skybase/ui/views/main_navigation/main_nav_controller.dart';
 import 'package:skybase/ui/views/utility/utility_view.dart';
 import 'package:skybase/ui/widgets/colored_status_bar.dart';
@@ -25,7 +24,7 @@ class MainNavView extends GetView<MainNavController> {
               children: const [
                 HomeView(),
                 FavoriteView(),
-                IntroView(),
+                // IntroView(),
                 UtilityView(),
               ],
             ),
@@ -55,10 +54,10 @@ class MainNavView extends GetView<MainNavController> {
               icon: Icon(CupertinoIcons.suit_heart),
               label: 'Favorite',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.book),
-              label: 'Intro',
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(CupertinoIcons.book),
+            //   label: 'Intro',
+            // ),
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.settings),
               label: 'Utility',
