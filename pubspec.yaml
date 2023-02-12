@@ -22,7 +22,6 @@ dependencies:
   hive: ^2.2.3
 
   # Notifications
-  socket_io_client: ^2.0.0
   flutter_local_notifications: ^13.0.0
 
   # File Manager
@@ -50,7 +49,6 @@ dependencies:
   fluttertoast: ^8.1.2
   webview_flutter: ^4.0.1
   introduction_screen: ^3.1.4
-  pin_code_fields: ^7.4.0
   dotted_border: ^2.0.0+3
   percent_indicator: ^4.2.2
 
