@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "180431956824",
+    "project_id": "skymovieapp",
+    "storage_bucket": "skymovieapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180431956824:android:a0e9411c9094a14cc5532d",
+        "android_client_info": {
+          "package_name": "com.sky.movieapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180431956824-g7d90utuc1u78j7tcsbqqjcbkhekdp8j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF8FNmHHL_NUEuEglcKaP7XIziwE8HAbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180431956824-g7d90utuc1u78j7tcsbqqjcbkhekdp8j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
