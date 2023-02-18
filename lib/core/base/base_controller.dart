@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 /* Created by
@@ -12,15 +13,21 @@ abstract class BaseController extends GetxController {
   void onRefresh();
 
   void showLoading() {
-    isLoading.toggle();
+    isLoading.value = true;
     isError.value = false;
     errorMessage.value = '';
   }
 
-  void hideLoading() => isLoading.toggle();
+  void hideLoading() => isLoading.value = false;
 
   void showError(String message) {
     errorMessage.value = message;
     isError.value = true;
+    Get.snackbar(
+      'Error',
+      message,
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+    );
   }
 }

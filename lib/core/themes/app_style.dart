@@ -29,7 +29,7 @@ class AppStyle {
   static TextStyle title4 = const TextStyle(fontSize: 28);
 
   static TextStyle subtitle1 = const TextStyle(fontSize: 24);
-  static TextStyle subtitle2 = const TextStyle(fontSize: 20);
+  static TextStyle subtitle2 = const TextStyle(fontSize: 20, fontWeight: FontWeight.w600);
   static TextStyle subtitle3 = const TextStyle(fontSize: 18);
   static TextStyle subtitle4 = const TextStyle(fontSize: 16);
 
