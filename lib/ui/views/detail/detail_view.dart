@@ -11,8 +11,10 @@ import 'widgets/recommended_component.dart';
 
 class DetailView extends GetView<DetailController> {
   static const String route = '/detail';
-
   const DetailView({Key? key}) : super(key: key);
+
+  @override
+  String get tag => Get.arguments.toString();
 
   @override
   Widget build(BuildContext context) {

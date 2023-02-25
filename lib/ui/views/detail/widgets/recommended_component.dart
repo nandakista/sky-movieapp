@@ -11,6 +11,9 @@ class RecommendedComponent extends GetView<DetailController> {
   const RecommendedComponent({Key? key}) : super(key: key);
 
   @override
+  String get tag => Get.arguments.toString();
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +42,9 @@ class RecommendedComponent extends GetView<DetailController> {
                     padding: const EdgeInsets.all(4.0),
                     child: InkWell(
                       onTap: () {
-                        Get.offNamed(DetailView.route, arguments: movie.id);
+                        Get.toNamed(DetailView.route, arguments: movie.id, preventDuplicates: false);
+                        // Get.toNamed(DetailView.route);
+                        print('Click');
                       },
                       child: ClipRRect(
                         borderRadius: const BorderRadius.all(

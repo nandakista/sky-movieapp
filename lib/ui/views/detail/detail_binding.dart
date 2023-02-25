@@ -22,6 +22,7 @@ class DetailBinding implements Bindings {
           repository: repository,
         ),
       ),
+      tag: Get.arguments.toString(),
     );
   }
 }
