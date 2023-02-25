@@ -47,7 +47,6 @@ dependencies:
   cupertino_icons: ^1.0.5
   lottie: ^2.2.0
   flutter_svg: ^1.1.6
-  fluttertoast: ^8.1.2
   webview_flutter: ^4.0.1
   introduction_screen: ^3.1.4
   dotted_border: ^2.0.0+3

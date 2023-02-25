@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skybase/app_configuration.dart';
 import 'package:skybase/ui/views/home/home_controller.dart';
 import 'package:skybase/ui/views/search/search_view.dart';
 
@@ -16,7 +17,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sky Movie'),
+        title: Text(AppConfiguration.appName),
         actions: [
           IconButton(
             onPressed: () {

@@ -41,7 +41,6 @@ class AuthManager extends GetxService {
   }
 
   authChanged(AuthState? state) async {
-    print('Auth state = ${state?.appStatus}');
     switch (state?.appStatus) {
       case AppType.INITIAL:
         await setup();

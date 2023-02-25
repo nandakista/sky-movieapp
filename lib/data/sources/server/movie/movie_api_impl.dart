@@ -53,7 +53,7 @@ class MovieApiImpl implements MovieApi {
   Future<List<Movie>> getRecommendedMovies({required int id}) async {
     try {
       final res = await ApiRequest.get(
-        url: '/movie/recommendations?api_key=${AppEnv.config.apiKey}',
+        url: '/movie/$id/recommendations?api_key=${AppEnv.config.apiKey}',
         useToken: true,
       );
       return MovieWrapper.fromJson(res.data).data;

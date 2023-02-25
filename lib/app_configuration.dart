@@ -9,6 +9,7 @@ class AppConfiguration {
   //-- Main Configuration
   static const clientToken = 'Some Client Token';
   static const tokenType = TokenType.ACCESS_TOKEN;
+  static const baseUrlImage = 'https://image.tmdb.org/t/p/w500';
 
   //-- Production
   static const productionAPI = 'https://api.themoviedb.org/3';
@@ -26,7 +27,7 @@ class AppConfiguration {
   static const devKey = '4a8d8611a243a3a3d004b0862d00283e';
 
   //-- App Info
-  static String appName = 'MovieApp';
+  static String appName = 'Movie App';
   static String appTag = r"Let's watch the movie";
   static String appVersion = AppInfo.packageInfo.version;
   static String buildNumber = AppInfo.packageInfo.buildNumber;

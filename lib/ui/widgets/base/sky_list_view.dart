@@ -111,9 +111,9 @@ class SkyListView extends StatelessWidget {
   }
 
   Widget getBodyWidget() {
-    if (onRefresh != null) {
+    if (onRetry != null || onRefresh != null) {
       return RefreshIndicator(
-        onRefresh: () => Future.sync(onRefresh!),
+        onRefresh: () => Future.sync(onRetry ?? onRefresh!),
         child: child,
       );
     } else {
@@ -151,7 +151,7 @@ class SkyListView extends StatelessWidget {
       errorImage: errorImage,
       errorTitle: errorTitle,
       errorSubtitle: errorSubtitle,
-      onRetry: onRetry,
+      onRetry: onRetry ?? onRefresh,
       retryText: retryText,
       isScrollable: isComponent,
       imageSize: imageSize,
