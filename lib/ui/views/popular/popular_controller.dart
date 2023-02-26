@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:skybase/core/base/base_controller.dart';
-import 'package:skybase/core/helper/firebase/analytics/analytics_helper.dart';
+import 'package:skybase/core/firebase/analytics/analytics_helper.dart';
 import 'package:skybase/domain/entities/movie.dart';
 import 'package:skybase/domain/usecases/get_popular_movies.dart';
 

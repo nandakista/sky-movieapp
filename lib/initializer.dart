@@ -9,10 +9,12 @@ import 'package:skybase/core/database/get_storage/get_storage_manager.dart';
 import 'package:skybase/core/database/hive/hive_db.dart';
 import 'package:skybase/core/database/secure_storage/secure_storage_manager.dart';
 import 'package:skybase/core/download_manager/download_manager.dart';
+import 'package:skybase/core/firebase/remote_config/force_update_manager.dart';
 import 'package:skybase/core/helper/general_function.dart';
 import 'package:skybase/core/network/api_config.dart';
 import 'package:skybase/core/themes/app_theme.dart';
 import 'package:skybase/core/themes/theme_manager.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 /* Created by
    Varcant
@@ -24,7 +26,18 @@ class Initializer {
     HttpOverrides.global = MyHttpOverrides();
     await _initConfig();
     await _initService();
+    await _initRemoteConfig();
     AppTheme.setStatusBar(brightness: Brightness.light);
+  }
+
+  static Future<void> _initRemoteConfig() async {
+    await FirebaseRemoteConfig.instance.setConfigSettings(
+      RemoteConfigSettings(
+        fetchTimeout: const Duration(seconds: 30),
+        minimumFetchInterval:
+        kDebugMode ? const Duration(seconds: 5) : const Duration(hours: 12),
+      ),
+    );
   }
 
   static Future<void> _initConfig() async {
@@ -43,7 +56,7 @@ class Initializer {
     Get.lazyPut(() => GetStorageManager());
     Get.lazyPut(() => SecureStorageManager());
     Get.put(ThemeManager());
-
+    Get.put(ForceUpdateManager());
     Get.put(AuthManager());
     // TODO : Uncomment code below if want to activate flutter_downloader
     await DownloadManager.initDownloader();

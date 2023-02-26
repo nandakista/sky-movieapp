@@ -1,4 +1,8 @@
 const Map<String, String> id = {
+  'txt_no': 'Tidak',
+  'txt_update_available': 'Update Tersedia',
+  'txt_update_now': 'Update Sekarang',
+  'txt_later': 'Nanti',
   'txt_expired': 'Berakhir',
   'txt_expired_k': 'Kedaluwarsa',
   'txt_days': 'Hari',

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skybase/core/helper/firebase/analytics/analytics_helper.dart';
+import 'package:skybase/core/firebase/analytics/analytics_helper.dart';
 import 'package:skybase/ui/views/favorite/favorite_view.dart';
 import 'package:skybase/ui/views/home/home_view.dart';
 import 'package:skybase/ui/views/intro/intro_view.dart';

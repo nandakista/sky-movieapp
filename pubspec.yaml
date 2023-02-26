@@ -71,6 +71,7 @@ dependencies:
   firebase_analytics: ^10.1.1
   firebase_crashlytics: ^3.0.12
   firebase_remote_config: ^3.0.10
+  store_redirect: ^2.0.1
 
 dev_dependencies:
   flutter_test:

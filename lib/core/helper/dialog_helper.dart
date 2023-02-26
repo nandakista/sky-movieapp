@@ -39,6 +39,7 @@ enum DialogType {
   RETRY,
   SOON,
   PERMISSION,
+  FORCE,
 }
 
 class SkyDialog {
@@ -52,6 +53,7 @@ class SkyDialog {
     String? confirmText,
     Widget? header,
     Color? backgroundColorHeader = Colors.transparent,
+    String? cancelText,
   }) {
     switch (type) {
       case DialogType.FAILED:
@@ -62,7 +64,7 @@ class SkyDialog {
             title: title ?? 'txt_failed'.tr,
             description: message,
             onConfirm: onPress,
-            isDismissible: isDismissible?? true,
+            isDismissible: isDismissible ?? true,
           ),
         );
       case DialogType.SUCCESS:
@@ -73,7 +75,7 @@ class SkyDialog {
             title: title ?? 'txt_success'.tr,
             description: message,
             onConfirm: onPress,
-            isDismissible: isDismissible?? false,
+            isDismissible: isDismissible ?? false,
           ),
         );
       case DialogType.WARNING:
@@ -82,11 +84,12 @@ class SkyDialog {
           context: Get.context!,
           builder: (context) => DialogAlert.warning(
             title: title ?? 'txt_warning'.tr,
-            backgroundColorHeader: Colors.orange,
             description: message,
             onConfirm: onPress,
             onCancel: onCancel ?? () => Get.back(),
-            isDismissible: isDismissible?? false,
+            isDismissible: isDismissible ?? true,
+            confirmText: confirmText ?? 'txt_ok'.tr,
+            cancelText: cancelText,
           ),
         );
       case DialogType.SOON:
@@ -104,7 +107,7 @@ class SkyDialog {
             description: message,
             onConfirm: onPress,
             onCancel: onCancel ?? () => Get.back(),
-            isDismissible: isDismissible?? true,
+            isDismissible: isDismissible ?? true,
           ),
         );
       case DialogType.PERMISSION:
@@ -119,7 +122,22 @@ class SkyDialog {
             onConfirm: onPress,
             onCancel: onCancel ?? () => Get.back(),
             confirmText: confirmText ?? 'OK',
-            isDismissible: isDismissible?? false,
+            isDismissible: isDismissible ?? false,
+          ),
+        );
+      case DialogType.FORCE:
+        return showDialog(
+          barrierDismissible: isDismissible ?? false,
+          context: Get.context!,
+          builder: (context) => DialogAlert.force(
+            header: header,
+            title: title ?? 'txt_warning'.tr,
+            description: message,
+            onConfirm: onPress,
+            onCancel: onCancel ?? () => Get.back(),
+            confirmText: confirmText ?? 'OK',
+            isDismissible: isDismissible ?? false,
+            cancelText: cancelText,
           ),
         );
     }

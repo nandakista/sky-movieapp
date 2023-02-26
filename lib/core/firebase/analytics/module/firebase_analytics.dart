@@ -1,6 +1,6 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:skybase/core/helper/firebase/analytics/analytics_route.dart';
+import 'package:skybase/core/firebase/analytics/analytics_route.dart';
 
 import 'analytics_interface.dart';
 

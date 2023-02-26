@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:skybase/core/themes/app_colors.dart';
 import 'package:skybase/core/themes/app_style.dart';
@@ -59,6 +59,7 @@ class SkyDialog extends StatelessWidget {
 
 class DialogAlert extends StatelessWidget {
   final String title, description, confirmText;
+  final String? cancelText;
   final VoidCallback? onConfirm, onCancel;
   final Color confirmColor, cancelColor;
   final Widget? header;
@@ -78,6 +79,7 @@ class DialogAlert extends StatelessWidget {
     this.confirmColor = AppColors.primary,
     this.cancelColor = AppColors.primary,
     this.confirmText = 'Ya',
+    this.cancelText,
     this.confirmTextColor,
     this.confirmBorderColor,
     this.confirmBackgroundColor,
@@ -133,6 +135,8 @@ class DialogAlert extends StatelessWidget {
     required VoidCallback onConfirm,
     required VoidCallback onCancel,
     required bool isDismissible,
+    String? cancelText,
+    required String confirmText,
   }) =>
       DialogAlert(
         title: title,
@@ -143,6 +147,8 @@ class DialogAlert extends StatelessWidget {
         onConfirm: onConfirm,
         onCancel: onCancel,
         backgroundColorHeader: backgroundColorHeader ?? Colors.orangeAccent,
+        cancelText: cancelText,
+        confirmText: confirmText,
       );
 
   factory DialogAlert.retry({
@@ -188,6 +194,30 @@ class DialogAlert extends StatelessWidget {
         confirmText: confirmText,
         backgroundColorHeader: backgroundColorHeader ?? Colors.orangeAccent,
         confirmColor: Colors.blue,
+      );
+
+  factory DialogAlert.force({
+    required String title,
+    required String confirmText,
+    required String description,
+    Widget? header,
+    Color? backgroundColorHeader,
+    String? cancelText,
+    required VoidCallback onConfirm,
+    required VoidCallback onCancel,
+    required bool isDismissible,
+  }) =>
+      DialogAlert(
+        title: title,
+        description: description,
+        isDismissible: isDismissible,
+        header: header ??
+            Lottie.asset('assets/anim/anim_warning.json', repeat: false),
+        onConfirm: onConfirm,
+        confirmText: confirmText,
+        backgroundColorHeader: backgroundColorHeader ?? Colors.orangeAccent,
+        confirmColor: Colors.blue,
+        cancelText: cancelText,
       );
 
   @override
@@ -247,7 +277,7 @@ class DialogAlert extends StatelessWidget {
                       Visibility(
                         visible: (onCancel != null),
                         child: SkyButton(
-                          text: 'Tidak',
+                          text: cancelText ?? 'txt_no'.tr,
                           fontWeight: AppStyle.semiBold,
                           color: cancelColor,
                           onPressed: onCancel,
