@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
 import 'package:skybase/core/base/base_controller.dart';
+import 'package:skybase/core/helper/firebase/analytics/analytics_helper.dart';
 import 'package:skybase/domain/entities/movie.dart';
 import 'package:skybase/domain/entities/movie_detail.dart';
 import 'package:skybase/domain/usecases/get_detail_movie.dart';
 import 'package:skybase/domain/usecases/get_recommendation_movies.dart';
+
+import 'detail_view.dart';
 
 class DetailController extends BaseController {
   GetDetailMovie getDetailMovie;
@@ -22,6 +25,7 @@ class DetailController extends BaseController {
   @override
   void onInit() {
     idArgs = Get.arguments;
+    AnalyticsHelper().logScreen(DetailView.route);
     loadData();
     loadRecommendationMovie();
     super.onInit();
@@ -46,7 +50,7 @@ class DetailController extends BaseController {
     }
   }
 
-  loadRecommendationMovie() async {
+  Future<void> loadRecommendationMovie() async {
     try {
       showLoading();
       await getRecommendationMovies(id: idArgs).then((res) {
@@ -57,5 +61,15 @@ class DetailController extends BaseController {
       hideLoading();
       showError(e.toString());
     }
+  }
+
+  Future<void> addToFavorite() async {
+    AnalyticsHelper().logEvent(
+      name: 'add_to_favorite',
+      parameters: {
+        'id': detailMovie.value?.id,
+        'movie_title': detailMovie.value?.title,
+      },
+    );
   }
 }

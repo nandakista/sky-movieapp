@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
 import 'package:skybase/core/base/base_controller.dart';
+import 'package:skybase/core/helper/firebase/analytics/analytics_helper.dart';
 import 'package:skybase/domain/entities/movie.dart';
 import 'package:skybase/domain/usecases/get_popular_movies.dart';
+
+import 'popular_view.dart';
 
 class PopularController extends BaseController {
   final GetPopularMovies getPopularMovies;
@@ -13,6 +16,7 @@ class PopularController extends BaseController {
   @override
   void onInit() {
     loadData();
+    AnalyticsHelper().logScreen(PopularView.route);
     super.onInit();
   }
 

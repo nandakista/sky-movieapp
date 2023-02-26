@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skybase/core/helper/firebase/analytics/analytics_helper.dart';
 import 'package:skybase/ui/views/favorite/favorite_view.dart';
 import 'package:skybase/ui/views/home/home_view.dart';
 import 'package:skybase/ui/views/intro/intro_view.dart';
@@ -10,7 +11,14 @@ import 'package:skybase/ui/widgets/colored_status_bar.dart';
 import 'package:skybase/ui/widgets/double_back_wrapper.dart';
 
 class MainNavView extends GetView<MainNavController> {
-  static const String route = '/home';
+  static const String route = '/main-nav';
+  static const Map<String, String> homeTabMenu = {
+    'Home': HomeView.route,
+    'Favorite': FavoriteView.route,
+    'Intro': IntroView.route,
+    'Utility': UtilityView.route,
+  };
+
   const MainNavView({Key? key}) : super(key: key);
 
   @override
@@ -21,7 +29,10 @@ class MainNavView extends GetView<MainNavController> {
           child: DoubleBack(
             child: PageView(
               controller: controller.pageController,
-              onPageChanged: (index) => controller.index.value = index,
+              onPageChanged: (index) {
+                controller.index.value = index;
+                AnalyticsHelper().logScreen(homeTabMenu.values.toList()[index]);
+              },
               children: const [
                 HomeView(),
                 FavoriteView(),

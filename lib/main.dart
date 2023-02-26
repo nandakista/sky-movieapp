@@ -7,6 +7,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:skybase/core/app/app_env.dart';
 import 'package:skybase/core/app/app_info.dart';
+import 'package:skybase/core/helper/firebase/analytics/analytics_helper.dart';
 import 'package:skybase/core/localization/app_translations.dart';
 import 'package:skybase/core/localization/locale_helper.dart';
 import 'package:skybase/core/themes/app_theme.dart';
@@ -56,6 +57,9 @@ class App extends StatelessWidget {
         fallbackLocale: LocaleHelper().fallbackLocale,
         getPages: AppPages.routes,
         initialRoute: AppPages.initial,
+        navigatorObservers: [
+          AnalyticsHelper().routeObserver,
+        ],
       ),
     );
   }

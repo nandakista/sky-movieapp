@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
 import 'package:skybase/core/base/base_controller.dart';
+import 'package:skybase/core/helper/firebase/analytics/analytics_helper.dart';
 import 'package:skybase/domain/entities/movie.dart';
 import 'package:skybase/domain/usecases/get_now_playing_movies.dart';
+
+import 'now_playing_view.dart';
 
 class NowPlayingController extends BaseController {
   final GetNowPlayingMovies getNowPlayingMovies;
@@ -13,6 +16,7 @@ class NowPlayingController extends BaseController {
   @override
   void onInit() {
     loadData();
+    AnalyticsHelper().logScreen(NowPlayingView.route);
     super.onInit();
   }
 
