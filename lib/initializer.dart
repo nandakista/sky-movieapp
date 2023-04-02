@@ -9,6 +9,7 @@ import 'package:skybase/core/database/get_storage/get_storage_manager.dart';
 import 'package:skybase/core/database/hive/hive_db.dart';
 import 'package:skybase/core/database/secure_storage/secure_storage_manager.dart';
 import 'package:skybase/core/download_manager/download_manager.dart';
+import 'package:skybase/core/firebase/crashlytics/crashlytics_helper.dart';
 import 'package:skybase/core/firebase/remote_config/force_update_manager.dart';
 import 'package:skybase/core/helper/general_function.dart';
 import 'package:skybase/core/network/api_config.dart';
@@ -24,6 +25,7 @@ class Initializer {
   static Future<void> init() async {
     if (kReleaseMode) debugPrint = (String? message, {int? wrapWidth}) {};
     HttpOverrides.global = MyHttpOverrides();
+    _initFirebaseCrashlytics();
     await _initConfig();
     await _initService();
     await _initRemoteConfig();
@@ -38,6 +40,11 @@ class Initializer {
         kDebugMode ? const Duration(seconds: 5) : const Duration(hours: 12),
       ),
     );
+  }
+
+  static void _initFirebaseCrashlytics() {
+    CrashlyticsHelper.catchErrorsFromFlutter();
+    CrashlyticsHelper.catchErrorsNotFromFlutter();
   }
 
   static Future<void> _initConfig() async {
