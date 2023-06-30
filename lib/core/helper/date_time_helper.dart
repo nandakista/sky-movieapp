@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:skybase/core/helper/extension/datetime_extension.dart';
+import 'package:skybase/core/extension/datetime_extension.dart';
 import 'package:skybase/core/localization/locale_helper.dart';
 
 class DateTimeHelper {
