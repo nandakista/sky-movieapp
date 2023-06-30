@@ -26,7 +26,7 @@ class SampleFeatureDetailView extends GetView<SampleFeatureDetailController> {
           child: Obx(
             () => SkyView(
               loadingEnabled: controller.isLoading.isTrue,
-              errorEnabled: controller.user.value == null,
+              errorEnabled: controller.isError.isTrue,
               onRetry: () => controller.loadData(),
               child: Column(
                 children: [
@@ -52,7 +52,7 @@ class SampleFeatureDetailView extends GetView<SampleFeatureDetailController> {
           CircleAvatar(
             radius: 45,
             child: SkyImage(
-              url: '${user?.avatarUrl}&s=200',
+              src: '${user?.avatarUrl}&s=200',
               borderRadius: BorderRadius.circular(90),
             ),
           ),

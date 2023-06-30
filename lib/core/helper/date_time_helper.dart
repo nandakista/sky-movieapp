@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:skybase/core/helper/extension/datetime_extension.dart';
-
-import 'locale_callback.dart';
+import 'package:skybase/core/localization/locale_helper.dart';
 
 class DateTimeHelper {
   static String parseLocalDate({
@@ -11,9 +10,9 @@ class DateTimeHelper {
     String? idFormat,
   }) {
     if (date != null) {
-      return LocaleCallback.builder(
-        enCallback: DateFormat(format).format(date),
-        idCallback: DateFormat(idFormat ?? format, 'id').format(date),
+      return LocaleHelper.builder(
+        en: DateFormat(format).format(date),
+        id: DateFormat(idFormat ?? format, 'id').format(date),
       );
     } else {
       return 'Date is null';
@@ -32,6 +31,8 @@ class DateTimeHelper {
       return '${date.difference(DateTime.now()).inHours} ${'txt_hours'.tr}';
     } else if (date.inNextWeek()) {
       return '${date.difference(DateTime.now()).inDays + 1} ${'txt_days'.tr}';
+    } else if (date.isBefore(DateTime.now())) {
+      return 'txt_expired'.tr;
     } else if (date.inThisYear()) {
       return parseLocalDate(date: date, format: 'dd MMM');
     } else {
@@ -45,10 +46,29 @@ class DateTimeHelper {
     } else if (date.isYesterday()) {
       return 'txt_yesterday'.tr;
     } else if (date.isTomorrow()) {
-      return 'txt_tommorow'.tr;
+      return 'txt_tomorrow'.tr;
     } else {
       return parseLocalDate(date: date, format: format ?? 'dd MMM');
     }
   }
-}
 
+  static String toLocalizeDay({required String dayName}) {
+    if (dayName == 'Sunday') {
+      return 'txt_sunday'.tr;
+    } else if (dayName == 'Monday') {
+      return 'txt_monday'.tr;
+    } else if (dayName == 'Tuesday') {
+      return 'txt_tuesday'.tr;
+    } else if (dayName == 'Wednesday') {
+      return 'txt_wednesday'.tr;
+    } else if (dayName == 'Thursday') {
+      return 'txt_thursday'.tr;
+    } else if (dayName == 'Friday') {
+      return 'txt_friday'.tr;
+    } else if (dayName == 'Saturday') {
+      return 'txt_saturday'.tr;
+    } else {
+      return dayName;
+    }
+  }
+}

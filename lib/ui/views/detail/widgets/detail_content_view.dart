@@ -36,7 +36,7 @@ class DetailContent extends StatelessWidget {
       child: Column(
         children: [
           SkyImage(
-            url: imageUrl,
+            src: imageUrl,
             width: MediaQuery.of(context).size.width,
             height: 500,
             fit: BoxFit.cover,

@@ -25,9 +25,9 @@ void main() async {
   );
 
   await Initializer.init();
-  AppEnv.set(Env.DEVELOPMENT);
+  AppEnv.set(Env.development);
   AppInfo.setInfo(await PackageInfo.fromPlatform());
-  if (AppEnv.env == Env.DEVELOPMENT) {
+  if (AppEnv.env == Env.development) {
     runApp(
       DevicePreview(
         enabled: !kReleaseMode,

@@ -18,8 +18,18 @@ class LocaleHelper {
 
   final fallbackLocale = const Locale('en');
 
-  /// Show dialog for change App Language
-  showLocaleDialog(BuildContext context) {
+  static T builder<T>({
+    required T en,
+    required T id,
+  }) {
+    if (LocaleHelper().getCurrentLocale() == const Locale('en')) {
+      return en;
+    } else {
+      return id;
+    }
+  }
+
+  void showLocaleDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) {
@@ -59,13 +69,13 @@ class LocaleHelper {
     );
   }
 
-  updateLocale(BuildContext context, Locale locale, String name) {
+  void updateLocale(BuildContext context, Locale locale, String name) {
     saveLocaleToCache(name);
     Navigator.of(context).pop();
     Get.updateLocale(locale);
   }
 
-  saveLocaleToCache(String name) {
+  void saveLocaleToCache(String name) {
     if (name == "English") {
       GetStorageManager.find.save(GetStorageKey.currentLocale, "en");
     } else {

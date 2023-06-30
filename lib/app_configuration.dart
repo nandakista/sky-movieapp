@@ -8,7 +8,7 @@ import 'package:skybase/core/network/api_token_manager.dart';
 class AppConfiguration {
   //-- Main Configuration
   static const clientToken = 'Some Client Token';
-  static const tokenType = TokenType.ACCESS_TOKEN;
+  static const tokenType = TokenType.accessToken;
   static const baseUrlImage = 'https://image.tmdb.org/t/p/w500';
 
   //-- Production

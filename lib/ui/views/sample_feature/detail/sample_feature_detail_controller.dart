@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skybase/core/base/base_controller.dart';
-import 'package:skybase/core/helper/dialog_helper.dart';
 import 'package:skybase/domain/entities/sample_feature/sample_feature.dart';
 import 'package:skybase/domain/usecases/get_detail_user.dart';
 
@@ -23,18 +22,18 @@ class SampleFeatureDetailController extends BaseController {
   }
 
   @override
-  void onRefresh() {
-    loadData();
-  }
-
-  @override
   void onReady() async {
     headerWidget.value = (headerKey.currentContext?.findRenderObject() as RenderBox).size;
     detailInfoWidget.value = (detailInfoKey.currentContext?.findRenderObject() as RenderBox).size;
     await loadData();
   }
 
-  loadData() async {
+  @override
+  void onRefresh() {
+    loadData();
+  }
+
+  Future<void> loadData() async {
     showLoading();
     try {
       await getDetailUser(user: user.value!).then((res) {
@@ -43,19 +42,7 @@ class SampleFeatureDetailController extends BaseController {
       });
     } catch (e) {
       hideLoading();
-      SkyDialog.show(
-        type: DialogType.RETRY,
-        isDismissible: false,
-        message: e.toString(),
-        onCancel: (){
-          SkyDialog.close();
-          Get.back();
-        },
-        onPress: () {
-          SkyDialog.close();
-          loadData();
-        },
-      );
+      showError(e.toString());
     }
   }
 }

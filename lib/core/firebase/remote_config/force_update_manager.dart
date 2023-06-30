@@ -42,21 +42,19 @@ class ForceUpdateManager extends GetxService {
     debugPrint('=============================================');
 
     if (buildNumber < minForce) {
-      SkyDialog.show(
-        type: DialogType.FORCE,
+      DialogHelper.force(
         title: 'txt_update_available'.tr,
         confirmText: 'txt_update_now'.tr,
         message: payload.messageInfo,
-        onPress: () => openStore(payload),
+        onConfirm: () => openStore(payload),
       );
     } else if (buildNumber < minInfo) {
-      SkyDialog.show(
-        type: DialogType.WARNING,
+      DialogHelper.warning(
         title: 'txt_update_available'.tr,
         confirmText: 'txt_update_now'.tr,
         cancelText: 'txt_later'.tr,
         message: payload.messageForce,
-        onPress: () => openStore(payload),
+        onConfirm: () => openStore(payload),
         onCancel: () => Get.back(),
       );
     }

@@ -11,7 +11,7 @@ import 'package:skybase/core/database/secure_storage/secure_storage_manager.dart
 import 'package:skybase/core/download_manager/download_manager.dart';
 import 'package:skybase/core/firebase/crashlytics/crashlytics_helper.dart';
 import 'package:skybase/core/firebase/remote_config/force_update_manager.dart';
-import 'package:skybase/core/helper/general_function.dart';
+import 'package:skybase/core/helper/http_overrides.dart';
 import 'package:skybase/core/network/api_config.dart';
 import 'package:skybase/core/themes/app_theme.dart';
 import 'package:skybase/core/themes/theme_manager.dart';
@@ -65,7 +65,6 @@ class Initializer {
     Get.put(ThemeManager());
     Get.put(ForceUpdateManager());
     Get.put(AuthManager());
-    // TODO : Uncomment code below if want to activate flutter_downloader
     await DownloadManager.initDownloader();
   }
 }

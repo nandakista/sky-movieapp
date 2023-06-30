@@ -14,19 +14,19 @@ abstract class SkyAppBar {
   static PreferredSizeWidget primary({
     String? title,
     Color? backgroundColor,
-    Color? textColor,
     Color? iconColor,
-    VoidCallback? onPressed,
     List<Widget>? action,
     bool? centerTitle = false,
+    TextStyle? titleStyle,
   }) {
     return BaseAppBar(
       title: title,
       action: action,
       backgroundColor: Theme.of(Get.context!).scaffoldBackgroundColor,
-      titleStyle: AppStyle.subtitle4.copyWith(color: AppColors.primary),
+      titleStyle: titleStyle ?? AppStyle.subtitle4.copyWith(color: AppColors.primary),
       elevation: 0,
-      iconColor: AppColors.systemDarkGrey,
+      iconColor: iconColor ?? AppColors.systemDarkGrey,
+      centerTitle: centerTitle,
     );
   }
 

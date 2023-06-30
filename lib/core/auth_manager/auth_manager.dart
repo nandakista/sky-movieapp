@@ -29,7 +29,7 @@ class AuthManager extends GetxService {
 
   @override
   void onInit() {
-    authState.value = const AuthState(appStatus: AppType.INITIAL);
+    authState.value = const AuthState(appStatus: AppType.initial);
     super.onInit();
   }
 
@@ -42,16 +42,16 @@ class AuthManager extends GetxService {
 
   authChanged(AuthState? state) async {
     switch (state?.appStatus) {
-      case AppType.INITIAL:
+      case AppType.initial:
         await setup();
         break;
-      case AppType.FIRST_INSTALL:
+      case AppType.firstInstall:
         Timer(
           const Duration(seconds: 2),
           () => Get.offAllNamed(IntroView.route),
         );
         break;
-      case AppType.UNAUTHENTICATED:
+      case AppType.unauthenticated:
         Timer(
           const Duration(seconds: 2),
           () => login(
@@ -61,7 +61,7 @@ class AuthManager extends GetxService {
           ),
         );
         break;
-      case AppType.AUTHENTICATED:
+      case AppType.authenticated:
         Get.offAllNamed(MainNavView.route);
         break;
       default:
@@ -76,10 +76,11 @@ class AuthManager extends GetxService {
 
   /// Check if app is first time installed. It will navigate to Introduction Page
   void checkFirstInstall() async {
-    final bool firstInstall = getStorage.get(GetStorageKey.firstInstall) ?? true;
+    final bool firstInstall =
+        getStorage.get(GetStorageKey.firstInstall) ?? true;
     if (firstInstall) {
       await secureStorage.setToken(value: '');
-      authState.value = const AuthState(appStatus: AppType.FIRST_INSTALL);
+      authState.value = const AuthState(appStatus: AppType.firstInstall);
     } else {
       checkUser();
     }
@@ -87,8 +88,9 @@ class AuthManager extends GetxService {
 
   /// Checking App Theme set it before app display
   Future<void> checkAppTheme() async {
-    final bool isDarkTheme = await getStorage.getAwait(GetStorageKey.darkTheme) ?? false;
-    if(isDarkTheme) {
+    final bool isDarkTheme =
+        await getStorage.getAwait(GetStorageKey.darkTheme) ?? false;
+    if (isDarkTheme) {
       themeManager.toDarkMode();
     } else {
       themeManager.toLightMode();
@@ -118,7 +120,7 @@ class AuthManager extends GetxService {
   /// Set auth state to AppType.AUTHENTICATED
   void setAuth() async {
     if (await secureStorage.isLoggedIn()) {
-      authState.value = const AuthState(appStatus: AppType.AUTHENTICATED);
+      authState.value = const AuthState(appStatus: AppType.authenticated);
     }
   }
 
@@ -129,7 +131,7 @@ class AuthManager extends GetxService {
   Future<void> logout() async {
     await secureStorage.logout();
     getStorage.logout();
-    authState.value = const AuthState(appStatus: AppType.UNAUTHENTICATED);
+    authState.value = const AuthState(appStatus: AppType.unauthenticated);
   }
 
   /// Just call this function to managed login process.

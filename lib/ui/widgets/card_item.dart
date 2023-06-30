@@ -28,7 +28,7 @@ class CardItem extends StatelessWidget {
       child: Row(
         children: [
           SkyImage(
-            url: imageUrl,
+            src: imageUrl,
             width: 80,
             height: 120,
             borderRadius: const BorderRadius.all(Radius.circular(8)),

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:skybase/core/download_manager/download_manager.dart';
 import 'package:skybase/core/firebase/analytics/analytics_helper.dart';
-import 'package:skybase/core/helper/sky_snackbar.dart';
+import 'package:skybase/core/helper/snackbar_helper.dart';
 import 'package:skybase/ui/views/utility/utility_view.dart';
 
 class UtilityController extends GetxController {
@@ -27,7 +27,7 @@ class UtilityController extends GetxController {
         .download(
           url: url1,
           onError: (errorMessage) {
-            SkySnackBar.showError(message: errorMessage.toString());
+            SnackBarHelper.error(message: errorMessage.toString());
           },
         )
         .then((_) => DownloadManager().showDownloadedSnackBar());

@@ -10,10 +10,9 @@ class SafeRequestAPI {
     try {
       await functionUpdate();
     } catch (e) {
-      SkyDialog.show(
-          type: DialogType.FAILED,
+      DialogHelper.failed(
           message: e.toString(),
-          onPress: () => SkyDialog.close());
+          onConfirm: () => DialogHelper.dismiss());
       rethrow;
     }
   }
@@ -25,11 +24,10 @@ class SafeRequestAPI {
     try {
       return await function();
     } catch (e) {
-      SkyDialog.show(
-        type: DialogType.FAILED,
+      DialogHelper.failed(
         message: e.toString(),
-        onPress: () {
-          SkyDialog.close();
+        onConfirm: () {
+          DialogHelper.dismiss();
         },
       );
       rethrow;

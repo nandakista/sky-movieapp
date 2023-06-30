@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:skybase/app_configuration.dart';
 import 'package:skybase/core/themes/app_style.dart';
 import 'package:skybase/ui/views/detail/detail_view.dart';
-import 'package:skybase/ui/views/search/search_controller.dart';
+import 'package:skybase/ui/views/search/search_controller.dart' as ctr;
 import 'package:skybase/ui/widgets/base/sky_list_view.dart';
 import 'package:skybase/ui/widgets/card_item.dart';
 import 'package:skybase/ui/widgets/content_wrapper.dart';
@@ -12,7 +12,7 @@ import 'package:skybase/ui/widgets/keyboard_dismisser.dart';
 import 'package:skybase/ui/widgets/sky_appbar.dart';
 import 'package:skybase/ui/widgets/sky_form_field.dart';
 
-class SearchView extends GetView<SearchController> {
+class SearchView extends GetView<ctr.SearchController> {
   static const String route = '/search';
 
   const SearchView({Key? key}) : super(key: key);
