@@ -2,9 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skybase/core/helper/dialog_helper.dart';
 import 'package:skybase/core/helper/file_helper.dart';
-import 'package:skybase/core/helper/general_function.dart';
 import 'package:skybase/core/helper/snackbar_helper.dart';
 import 'package:skybase/ui/widgets/circle_icon.dart';
 

@@ -30,11 +30,11 @@ class HomeView extends GetView<HomeController> {
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () => controller.onRefresh(),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(vertical: 16),
+          child: const SingleChildScrollView(
+            padding: EdgeInsets.symmetric(vertical: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 NowPlayingComponents(),
                 SizedBox(height: 4),
                 Divider(thickness: 1, height: 24),

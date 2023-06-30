@@ -8,7 +8,7 @@ class FavoriteView extends GetView<FavoriteController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text('Favorite View'),
       ),

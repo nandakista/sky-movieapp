@@ -28,9 +28,9 @@ class PersonAdapter extends TypeAdapter<SampleFeature> {
       repository: fields[8] as int?,
       followers: fields[9] as int?,
       following: fields[10] as int?,
-      repositoryList: (fields[11] as List?)?.cast<Repo>(),
-      followersList: (fields[12] as List?)?.cast<SampleFeature>(),
-      followingList: (fields[13] as List?)?.cast<SampleFeature>(),
+      repositoryList: (fields[11] as List?)?.cast<RepoModel>(),
+      followersList: (fields[12] as List?)?.cast<SampleFeatureModel>(),
+      followingList: (fields[13] as List?)?.cast<SampleFeatureModel>(),
     );
   }
 

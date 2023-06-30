@@ -44,7 +44,6 @@ class RecommendedComponent extends GetView<DetailController> {
                       onTap: () {
                         Get.toNamed(DetailView.route, arguments: movie.id, preventDuplicates: false);
                         // Get.toNamed(DetailView.route);
-                        print('Click');
                       },
                       child: ClipRRect(
                         borderRadius: const BorderRadius.all(

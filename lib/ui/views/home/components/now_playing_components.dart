@@ -5,7 +5,6 @@ import 'package:skybase/core/themes/app_style.dart';
 import 'package:skybase/ui/views/detail/detail_view.dart';
 import 'package:skybase/ui/views/now_playing/now_playing_controller.dart';
 import 'package:skybase/ui/views/now_playing/now_playing_view.dart';
-import 'package:skybase/ui/views/popular/popular_view.dart';
 import 'package:skybase/ui/widgets/base/sky_list_view.dart';
 import 'package:skybase/ui/widgets/content_wrapper.dart';
 

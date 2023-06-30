@@ -25,8 +25,7 @@ class SampleFeatureApiImpl extends SampleFeatureApi {
       );
       return (res.data['items'])
           .map((data) => SampleFeatureModel.fromJson(data))
-          .toList()
-          .cast<SampleFeature>();
+          .toList();
     } catch (e) {
       debugPrint('$tag Error = $e');
       rethrow;
@@ -82,7 +81,7 @@ class SampleFeatureApiImpl extends SampleFeatureApi {
   }
 
   @override
-  Future<List<Repo>> getRepos({required String username}) async {
+  Future<List<RepoModel>> getRepos({required String username}) async {
     try {
       final res = await ApiRequest.get(
         url: '/users/$username/repos?type=all',
@@ -92,7 +91,9 @@ class SampleFeatureApiImpl extends SampleFeatureApi {
           .map((data) => RepoModel.fromJson(data))
           .toList()
           .cast<Repo>();
-      // return List<Repo>.from(_res.data.map((data) => Repo.fromJson(data)));
+      // return List<RepoModel>.from(
+      //   res.data.map((data) => RepoModel.fromJson(data)),
+      // );
     } catch (e) {
       debugPrint('$tag Error = $e');
       rethrow;

@@ -1,4 +1,3 @@
-import 'package:skybase/app_configuration.dart';
 import 'package:skybase/core/app/app_env.dart';
 import 'package:skybase/core/network/api_request.dart';
 import 'package:skybase/data/models/movie_detail_model.dart';

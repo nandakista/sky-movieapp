@@ -41,7 +41,7 @@ class _VideoPreviewDisplayState extends State<VideoPreviewDisplay> {
     final isFromRemote = widget.url.startsWith('http');
 
     videoController = isFromRemote
-        ? VideoPlayerController.network(widget.url)
+        ? VideoPlayerController.networkUrl(Uri.parse(widget.url))
         : VideoPlayerController.file(File(widget.url));
 
     await videoController.initialize();
