@@ -82,20 +82,21 @@ class DetailContent extends StatelessWidget {
                   style: AppStyle.body2,
                 ),
                 const SizedBox(height: 4),
-                if(runtime != null) Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    const Icon(
-                      CupertinoIcons.time,
-                      size: 18,
-                    ),
-                    const SizedBox(width: 4),
-                     Text(
-                      _buildDuration(runtime!),
-                      style: AppStyle.body2,
-                    ),
-                  ],
-                ),
+                if (runtime != null)
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(
+                        CupertinoIcons.time,
+                        size: 18,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        _buildDuration(runtime!),
+                        style: AppStyle.body2,
+                      ),
+                    ],
+                  ),
                 const SizedBox(height: 8),
                 Row(
                   children: [
@@ -135,7 +136,7 @@ class DetailContent extends StatelessWidget {
                   style: AppStyle.body2,
                 ),
                 const SizedBox(height: 16),
-                if(recommendedView != null) recommendedView!,
+                if (recommendedView != null) recommendedView!,
               ],
             ),
           ),
